@@ -3,13 +3,19 @@ let gameActive = true, currentPlayer = 'X', gameState = ['', '', '', '', '', '',
 
 const winBanner = () => `Player ${currentPlayer} has won!`
 const drawBanner = () => 'Game ended in a draw!'
-const whoseTurn = () => `It's ${currentPlayer}'s turn`s
+const whoseTurn = () => `It's ${currentPlayer}'s turn`
 
 status.innerHTML = whoseTurn()
 
-const handleCell = () => {}
+const handleCell = (clickedCell, clickedCellIndex) => {
+    gameState[clickedCellIndex] = currentPlayer
+    clickedCell.innerHTML = currentPlayer 
+}
+
 const playerChange = () => {}
+
 const handleReset = () => {}
+
 const handleClick = (clickedCellEvent) => {
     const clickedCell = clickedCellEvent.target
     
@@ -22,6 +28,7 @@ const handleClick = (clickedCellEvent) => {
     handleCell(clickedCell, clickedCellIndex)
     handleResult()
 }
+
 const handleResult = () => {}
 
 document.querySelectorAll('.cell').forEach(cell =>
