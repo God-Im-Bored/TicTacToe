@@ -21,11 +21,26 @@ status.innerHTML = whoseTurn()
 const handleCell = (clickedCell, clickedCellIndex) => {
     gameState[clickedCellIndex] = currentPlayer
     clickedCell.innerHTML = currentPlayer 
+
+    if (currentPlayer === 'X') {
+        document.querySelector('.cell')[clickedCellIndex].style.color = 'red'
+    } else {
+        document.querySelector('.cell')[clickedCellIndex].style.color = 'blue'
+    }
 }
 
-const playerChange = () => {}
+const playerChange = () => {
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
+    status.innerHTML = whoseTurn()
+}
 
-const handleReset = () => {}
+const handleReset = () => {
+    gameActive = true
+    currentPlayer = 'X'
+    gameState = ['', '', '', '', '', '', '', '', '']
+    status.innerHTML = whoseTurn()
+    document.querySelector('.cell').forEach(cell => cell.innterHTML = '')
+}
 
 const handleClick = (clickedCellEvent) => {
     const clickedCell = clickedCellEvent.target
